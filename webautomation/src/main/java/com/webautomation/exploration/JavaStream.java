@@ -3,6 +3,7 @@ package com.webautomation.exploration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class JavaStream {
 
@@ -24,6 +25,11 @@ public class JavaStream {
         }
         
         
+        //menggunakan java stream
+        resultList = arrayList.stream().filter(number -> number.equals(5)).collect(Collectors.toList());
+
+
+        System.out.println("Stream : "+ resultList);
     }
 
     

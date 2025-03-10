@@ -1,4 +1,4 @@
-package com.webautomation.scenario;
+package automation;
 
 import java.time.Duration;
 import java.util.List;
@@ -7,42 +7,35 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
-public class ScenarioE2E {
+public class ScenarioTestNG {
 
-    public static void main(String[] args) throws InterruptedException {
+    WebDriver driver;
 
-        WebDriver driver = new ChromeDriver();
-        initialization(driver, "https://www.saucedemo.com/");
+    @BeforeTest
+    public void initialization() {
 
-        Thread.sleep(3000);
+        driver = new ChromeDriver();
 
-        login(driver);
-
-        chooseProduct(driver);
-
-        checkOut(driver);
-
-        Thread.sleep(3000);
-
-        driver.quit();
+        driver.get("https://www.saucedemo.com/");
 
     }
 
-    static void initialization(WebDriver driver, String url) {
+    @Test
+    public void createOrder() throws InterruptedException {
 
-        driver.get(url);
-    }
-
-    static void login(WebDriver driver) throws InterruptedException {
+        Thread.sleep(3000);
 
         driver.findElement(By.id("user-name")).sendKeys("standard_user");
         driver.findElement((By.id("password"))).sendKeys("secret_sauce");
         driver.findElement(By.id("login-button")).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-    }
+    
 
-    static void chooseProduct(WebDriver driver) throws InterruptedException {
+    
 
         List<WebElement> listProduct = driver.findElements(By.className("inventory_item_name"));
 
@@ -51,9 +44,7 @@ public class ScenarioE2E {
         //         product.click();
         //         break;
         //     }
-
         // }
-
         WebElement product = listProduct.stream().filter(prod -> prod.getText().equals("Sauce Labs Backpack")).findFirst().orElse(null);
 
         product.click();
@@ -63,9 +54,9 @@ public class ScenarioE2E {
         driver.findElement(By.className("shopping_cart_link")).click();
         Thread.sleep(3000);
 
-    }
+    
 
-    static void checkOut(WebDriver driver) throws InterruptedException {
+    
 
         driver.findElement(By.id("checkout")).click();
         Thread.sleep(2000);
@@ -78,4 +69,13 @@ public class ScenarioE2E {
         driver.findElement(By.id("finish")).click();
 
     }
+
+
+    @AfterTest
+    public void afterRunTest(){
+
+        driver.quit();
+        driver.close();
+    }
+
 }
