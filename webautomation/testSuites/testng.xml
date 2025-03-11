@@ -5,7 +5,7 @@
         <test name="MyTestGroup">
         <parameter name="program"  value="Bootcamp API Automation"/>
             <classes>
-                <class name="automation.ScenarioTestNG" />
+                <class name="automation.ScenarioTestngImpl"/>
             </classes>
         </test>
     </suite>

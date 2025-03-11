@@ -70,10 +70,11 @@ public class ScenarioTestNG {
 
     }
 
+    
 
     @AfterTest
     public void afterRunTest(){
-
+        
         driver.quit();
         driver.close();
     }

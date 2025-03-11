@@ -18,18 +18,18 @@ import com.webautomation.pageobject.LoginPage;
 
 public class ScenarioTestngImpl {
 
-    WebDriver driver ;
+    WebDriver driver;
 
     @BeforeTest
-    public void setUp (){
+    public void setUp() {
         driver = new ChromeDriver();
         driver.get("https://www.saucedemo.com/");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
     }
 
-    @Test (dataProvider="dataTestMapping")
-    public void checkout (HashMap<String,String> input){
-        
+    @Test(dataProvider = "dataTestMapping")
+    public void checkout(HashMap<String, String> input) {
+
         LoginPage login = new LoginPage(driver);
         login.login(input.get("username"), input.get("password"));
         InventoryPage inventory = new InventoryPage(driver);
@@ -43,23 +43,22 @@ public class ScenarioTestngImpl {
     }
 
     @AfterTest
-    public void tearDown (){
-        driver.quit();
+    public void tearDown() {
         driver.close();
+        driver.quit();
+
     }
 
-
     @DataProvider
-    public Object [][] dataTestMapping (){
+    public Object[][] dataTestMapping() {
         HashMap map = new HashMap<String, String>();
         map.put("username", "standard_user");
         map.put("password", "secret_sauce");
-        map.put("product", "Sauce Labs Backpack" );
+        map.put("product", "Sauce Labs Backpack");
         map.put("postcode", "13215");
 
-        return new Object[][] {{map}};
-        
-    }
+        return new Object[][]{{map}};
 
+    }
 
 }
