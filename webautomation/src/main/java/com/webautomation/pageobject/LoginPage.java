@@ -28,6 +28,9 @@ public class LoginPage extends AbstractComponent{
     @FindBy(id="login-button")
     WebElement loginBtn;
 
+    @FindBy(xpath="//h3[@data-test='error']")
+    WebElement txtValidateFailedLogin;
+
     By iconOption = By.id("react-burger-menu-btn");
     
 
@@ -36,9 +39,13 @@ public class LoginPage extends AbstractComponent{
         this.username.sendKeys(username);
         this.password.sendKeys(password);
         loginBtn.click();
-        visibilityOfElementLocated(iconOption);
+        //visibilityOfElementLocated(iconOption);
         
 
+    }
+
+    public String validateLoginFailed (){
+        return txtValidateFailedLogin.getText();
     }
 
 }
