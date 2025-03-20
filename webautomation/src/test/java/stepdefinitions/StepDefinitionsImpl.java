@@ -11,6 +11,7 @@ import com.webautomation.pageobject.InventoryPage;
 import com.webautomation.pageobject.LoginPage;
 
 import components.BaseTest;
+import hook.Hooks;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -25,7 +26,7 @@ public class StepDefinitionsImpl extends BaseTest{
         // driver = new ChromeDriver();
         // driver.get("https://www.saucedemo.com/");
         // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-       driver = initializeDriver();
+       driver = Hooks.initializeDriver();
 
     }
 
@@ -62,7 +63,7 @@ public class StepDefinitionsImpl extends BaseTest{
     public void confirmationPage(String successCheckout) {
         CheckOutPage checkOut = new CheckOutPage(driver);
         Assert.assertEquals(checkOut.getTextSuccess(), successCheckout);
-        driver.close();
+        
     }
 
     @Then ("^Buyer will see alert failed message (.+)$")
@@ -70,7 +71,7 @@ public class StepDefinitionsImpl extends BaseTest{
 
         LoginPage login = new LoginPage(driver);
         Assert.assertEquals(login.validateLoginFailed(), validateFailed);
-        driver.close();
+        
 
     }
 
@@ -78,7 +79,7 @@ public class StepDefinitionsImpl extends BaseTest{
     public void deleteProduct (){
         CartPage cart = new CartPage(driver);
         cart.removeProduct();
-        driver.close();
+        
     }
 
 }
