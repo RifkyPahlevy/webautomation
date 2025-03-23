@@ -82,4 +82,11 @@ public class StepDefinitionsImpl extends BaseTest{
         
     }
 
+    @Then ("Buyer will see count of product")
+    public void listCartProduct(){
+        CartPage cart = new CartPage(driver);
+        cart.listProductCart();
+    }
+
+
 }

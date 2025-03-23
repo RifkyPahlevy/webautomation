@@ -1,35 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="31.882" tests="4" skipped="0" failures="0" errors="0" timestamp="2025-03-19T06:37:18.051864600Z">
-<testcase classname="Purchase the order from ecomerce" name="Success create order - #1.1" time="12.795">
-<system-out><![CDATA[
-Given Buyer landed to website...............................................passed
-Given Buyer logged to website email standard_user and password secret_sauce.passed
-When Buyer add the product Sauce Labs Backpack to cart......................passed
-And Buyer checkout the product..............................................passed
-And Buyer fill form data first name Rifky, last name Pahlevy, and postal code <postcode>.passed
-Then Buyer will see message is displayed on confirmation page Thank you for your order!.passed
-]]></system-out>
-</testcase>
-<testcase classname="Purchase the order from ecomerce" name="Failed login to website - #1.1" time="6.151">
-<system-out><![CDATA[
-Given Buyer landed to website...............................................passed
-When Buyer logged to website email standaran and password <password>........passed
-Then Buyer will see alert failed message Epic sadface: Username and password do not match any user in this service.passed
-]]></system-out>
-</testcase>
-<testcase classname="Purchase the order from ecomerce" name="Failed login to website - #1.2" time="5.892">
-<system-out><![CDATA[
-Given Buyer landed to website...............................................passed
-When Buyer logged to website email standard_user and password <password>....passed
-Then Buyer will see alert failed message Epic sadface: Username and password do not match any user in this service.passed
-]]></system-out>
-</testcase>
-<testcase classname="Purchase the order from ecomerce" name="Success delete item - #1.1" time="6.725">
+<testsuite name="Cucumber" time="7.545" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-03-23T17:43:45.714148900Z">
+<testcase classname="Purchase the order from ecomerce" name="Success delete item - #1.1" time="7.307">
 <system-out><![CDATA[
 Given Buyer landed to website...............................................passed
 Given Buyer logged to website email standard_user and password secret_sauce.passed
 When Buyer add the product Sauce Labs Backpack to cart......................passed
 And Buyer can delete the product in cart....................................passed
+Then Buyer will see count of product........................................passed
 ]]></system-out>
 </testcase>
 </testsuite>

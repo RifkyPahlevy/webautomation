@@ -20,7 +20,8 @@ public class CartPage extends AbstractComponent {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//div[@class='cart_item']//div[@class='cart_item_label']//div[@class='item_pricebar']//button[@class='btn btn_secondary btn_small cart_button']")
+    // @FindBy(xpath = "//div[@class='cart_list']//div[@class='cart_item']")
+    @FindBy(xpath = "//div[@class='cart_list']")
     List<WebElement> listCartProduct;
 
     @FindBy(id = "checkout")
@@ -41,6 +42,12 @@ public class CartPage extends AbstractComponent {
     public void removeProduct() {
 
         btnRemove.click();
+
+    }
+
+    public int listProductCart() {
+        System.out.println(listCartProduct.size());
+        return listCartProduct.size();
 
     }
 }

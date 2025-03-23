@@ -33,7 +33,7 @@ Feature: Purchase the order from ecomerce
     Given Buyer logged to website email <email> and password <password>
     When Buyer add the product <product_name> to cart
     And Buyer can delete the product in cart
-    # Then Buyer will see message is displayed on confirmation page Thank you for your order!
+    Then Buyer will see count of product
 
     Examples:
       | email         | password     | product_name        | first_name | last_name |
